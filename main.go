@@ -206,7 +206,7 @@ func IdGetData(c echo.Context) error {
 	err = row.Scan(&cat.ID, &cat.Name, &cat.Age, &cat.Homeless, &cat.ImgURL)
 	if errors.Is(err, sql.ErrNoRows) {
 
-		return c.String(http.StatusNotFound, fmt.Sprintf("Такого кота нету, вы - еблан"))
+		return c.String(http.StatusNotFound, fmt.Sprintf("Такого кота нету"))
 	}
 	return c.HTML(http.StatusOK, fmt.Sprintf("<h1>Это кот - %s</h1><h1>Это данные: %v\n,%v\n,%v\n,%v\n,%v\n</h1><img src=%v>", cat.Name, cat.ID, cat.Name, cat.Age, cat.Homeless, cat.ImgURL, cat.ImgURL))
 }
